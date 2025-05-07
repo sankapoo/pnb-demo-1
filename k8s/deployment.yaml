@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend-ms
+  name: backend-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-ms
+  template:
+    metadata:
+      labels:
+        app: backend-ms
+    spec:
+      containers:
+        - image: quay.io/sankapoo/backend-ms:1.0
+          imagePullPolicy: Always
+          name: backend-ms
+          ports:
+            - containerPort: 8080
+              protocol: TCP
