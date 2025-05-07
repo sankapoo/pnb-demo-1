@@ -15,7 +15,7 @@ spec:
         app: backend-ms
     spec:
       containers:
-        - image: quay.io/sankapoo/backend-ms:1.0
+        - image: quay.io/sankapoo/backend-ms:static
           imagePullPolicy: Always
           name: backend-ms
           ports:
