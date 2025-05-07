@@ -55,8 +55,6 @@ spec:
     params:
     - name: IMAGE
       value: $(params.IMAGE)
-    - name: DOCKERFILE
-      value: Containerfile     # Add this
     workspaces:
     - name: source
       workspace: shared-workspace
