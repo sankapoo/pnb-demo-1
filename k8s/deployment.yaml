@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: backend-ms
-  name: backend-ms
+    app: pnb-demo-1
+  name: pnb-demo-1            # change name to match repo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend-ms
+      app: pnb-demo-1
   template:
     metadata:
       labels:
-        app: backend-ms
+        app: pnb-demo-1
     spec:
       containers:
         - image: quay.io/sankapoo/backend-ms:static
           imagePullPolicy: Always
-          name: backend-ms
+          name: pnb-demo-1   # container name should also match
           ports:
             - containerPort: 8080
               protocol: TCP
