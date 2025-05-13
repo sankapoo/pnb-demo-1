@@ -4,18 +4,20 @@ FROM maven:3.8.4-openjdk-8 AS build
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the Maven project descriptor files
-COPY pom.xml .
+# ── 1. Copy the completely-populated offline Maven repository
 COPY m2-repo /root/.m2/repository
 
+# Copy the Maven project descriptor files
+COPY pom.xml .
+
 # Fetch dependencies specified in pom.xml
-RUN mvn dependency:go-offline
+RUN mvn -o dependency:go-offline
 
 # Copy the entire project source
 COPY src ./src
 
 # Build the application using Maven
-RUN mvn package -DskipTests
+RUN mvn -o package -DskipTests
 
 # Use a smaller base image for the application runtime
 FROM openjdk:8-jre-slim
