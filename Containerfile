@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the Maven project descriptor files
 COPY pom.xml .
+COPY m2-repo /root/.m2/repository
 
 # Fetch dependencies specified in pom.xml
 RUN mvn dependency:go-offline
